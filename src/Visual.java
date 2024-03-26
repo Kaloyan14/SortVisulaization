@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Visual extends JFrame {
 
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(600, 400);
+                return new Dimension(1200, 800);
             }
         };
 
@@ -75,8 +76,7 @@ public class Visual extends JFrame {
 
         panel.add(okButton);
         panel.add(resetButton);
-
-        getContentPane().add(panel);
+        add(panel);
         setVisible(true);
     }
 
@@ -86,9 +86,9 @@ public class Visual extends JFrame {
         int size = (getWidth() - 2 * startX) / ARRAY_SIZE - 4;
 
         for (int value : values) {
-            int squareSize = (int) ((double) value / ARRAY_SIZE * (getHeight() - 2 * startY)); // Adjusting size based on value proportion
+            int squareSize = (int) ((double) value / ARRAY_SIZE * (getHeight() - 2 * startY));
             g.setColor(new Color(0, 100, 255));
-            g.fillRect(startX, getHeight() - startY, size, -squareSize);
+            g.fillRect(startX, startY, size, squareSize);
             startX += size + 4;
         }
     }
